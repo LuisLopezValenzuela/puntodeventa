@@ -15,9 +15,9 @@
 		@foreach($empleados as $e)
 			<tr>
 				<td>{{$e->id}}</td>
-				<td>{{$e->nombre}}</td>
+				<td>{{$e->name}}</td>
 				<td>{{$e->puesto}}</td>
-				<td>{{$e->usuario}}</td>
+				<td>{{$e->email}}</td>
 				<td>
 					<a href="#" class="btn btn-primary btn-xs">
 						<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>

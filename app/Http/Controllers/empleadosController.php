@@ -14,10 +14,10 @@ class empleadosController extends Controller
 
     public function guardar(request $datos){
     	$empleado= new Empleados();
-    	$empleado->nombre=$datos->input('nombre');
+    	$empleado->name=$datos->input('name');
     	$empleado->puesto=$datos->input('puesto');
-    	$empleado->usuario=$datos->input('usuario');
-    	$empleado->clave=$datos->input('clave');
+    	$empleado->email=$datos->input('email');
+    	$empleado->password=$datos->input('clave');
     	$empleado->save();
 
     	return redirect('/consultarEmpleados');
