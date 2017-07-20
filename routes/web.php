@@ -24,3 +24,12 @@ Route::get('/consultarEmpleados', 'empleadosController@consultar');
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
+
+//rutas para productos
+
+Route::get('/registrarProductos', 'productosController@registrar');
+Route::post('/guardarProductos',"productosController@guardar");
+Route::get('/consultarProductos', "productosController@consultar");
+Route::get('/eliminarProductos/{id}',"productosController@eliminar");
+Route::get('/editarProductos/{id}',"productosController@editar");
+Route::post('/actualizarProductos/{id}',"productosController@actualizar");

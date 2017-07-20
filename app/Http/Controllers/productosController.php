@@ -62,3 +62,7 @@ public function actualizar($id,Request $datos){
 
 }
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin
