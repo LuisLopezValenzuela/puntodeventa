@@ -27,7 +27,7 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Mas Opciones <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
             <li><a href="{{url('/registrarEmpleados')}}">Registrar Empleados</a></li>
-            <li><a href="#">Registrar Productos</a></li>
+            <li><a href="{{url('/registrarProductos')}}">Registrar Productos</a></li>
             <li class="divider"></li>
             <li><a href="{{url('/consultarEmpleados')}}">Lista de Empleados</a></li>
           </ul>
