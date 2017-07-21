@@ -67,7 +67,7 @@ class productosController extends Controller
 		->join('proveedores','productos_proveedores.proveedores_id','proveedores.id')
 		->join('categorias','productos.categoria_id','categorias.id')
 		->select('productos_proveedores.*','productos.codigo AS codigo','productos.nombre AS nombre','productos.stock AS stock','productos.precio AS precio','categorias.nombre as nom_categoria','proveedores.nombre AS nom_proveedor','productos.created_at as fecha' )
-		->get();
+		->paginate(5);
 		return view('reporteInventario',compact('productos_proveedor'));
 	}
 

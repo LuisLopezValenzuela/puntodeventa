@@ -27,4 +27,7 @@
 		@endforeach
 	</tbody>
 </table>
+<div class="text-center">
+	{{$productos_proveedor->links()}}
+</div>
 @stop
