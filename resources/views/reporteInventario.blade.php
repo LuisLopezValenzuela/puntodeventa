@@ -23,6 +23,14 @@
 			<td>{{$a->nom_categoria}}</td>
 			<td>{{$a->nom_proveedor}}</td>
 			<td>{{$a->fecha}}</td>
+			<td>
+					<a href="{{url('/editarProductos')}}/{{$a->id}}" class="btn  btn-primary btn-xs">
+						 <span class="glyphicon  glyphicon-pencil" aria-hidden="true"></span>
+					</a>
+					<a href="{{url('/eliminarProductos')}}/{{$a->id}}" class="btn btn-danger btn-xs">
+						<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+					</a>
+			</td>
 		</tr>
 		@endforeach
 	</tbody>

@@ -59,7 +59,7 @@ class productosController extends Controller
 			$producto->descuento=$datos->input('descuento');
 			$producto->codigo=$datos->input('codigo');
 			$producto->stock=$datos->input('stock');
-			$producto->categoria_id=$datos->input('categorias');
+			$producto->categoria_id=$datos->input('categoria');
 			$producto->save();
 			return redirect('consultarProductos');
 
