@@ -39,7 +39,7 @@
 	</div>
 	<div>
 		<button type="submit" class="btn btn-primary">Registar</button>
-		<a href="{{url('/')}}" class="btn btm-danger">Cancelar</a>
+		<a href="{{url('/')}}" class="btn btn-danger">Cancelar</a>
 
 	</div>
 
