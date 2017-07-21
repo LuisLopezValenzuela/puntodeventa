@@ -16,10 +16,13 @@ class productosController extends Controller
 	}
 	public function guardar(Request $datos)
 	{
+		$descuento=$datos->input('descuento'); 
+		$descuento=$descuento/100;
+
 		$producto= new Productos();
 		$producto->nombre=$datos->input('nombre');
 		$producto->precio=$datos->input('precio');
-		$producto->descuento=$datos->input('descuento');
+		$producto->descuento=$descuento;
 		$producto->codigo=$datos->input('codigo');
 		$producto->stock=$datos->input('stock');
 		$producto->categoria_id=$datos->input('categoria');
