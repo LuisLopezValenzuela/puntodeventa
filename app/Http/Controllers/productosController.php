@@ -65,7 +65,8 @@ class productosController extends Controller
 		$productos_proveedor=DB::table('productos_proveedores')
 		->join('productos','productos_proveedores.productos_id','productos.id')
 		->join('proveedores','productos_proveedores.proveedores_id','proveedores.id')
-		->select('productos_proveedores.*','productos.codigo AS codigo','productos.nombre AS nombre','productos.stock AS stock','productos.precio AS precio','productos.categoria_id as id_categoria','proveedores.nombre AS nom_proveedor' )
+		->join('categorias','productos.categoria_id','categorias.id')
+		->select('productos_proveedores.*','productos.codigo AS codigo','productos.nombre AS nombre','productos.stock AS stock','productos.precio AS precio','categorias.nombre as nom_categoria','proveedores.nombre AS nom_proveedor','productos.created_at as fecha' )
 		->get();
 		return view('reporteInventario',compact('productos_proveedor'));
 	}
