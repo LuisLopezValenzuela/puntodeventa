@@ -7,10 +7,12 @@
 			<th>Codigo</th>
 			<th>Nombre</th>
 			<th>Cantidad</th>
+			<th>Agregar</th>
 			<th>Precio</th>
 			<th>Categorias</th>
 			<th>Proveedor</th>		
 			<th>Fecha de registro</th>
+			<th>Opciones</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -19,6 +21,14 @@
 			<td>{{$a->codigo}}</td>
 			<td>{{$a->nombre}}</td>
 			<td>{{$a->stock}}</td>
+			<td>
+				<div class="input-group">
+					<input type="number" class="form-control" name="agregar" required>
+					<span class="input-group-btn">
+	      				<button class="btn btn-default" type="button">Button</button>
+	    			</span>
+    			</div>
+			</td>
 			<td>{{$a->precio}}</td>
 			<td>{{$a->nom_categoria}}</td>
 			<td>{{$a->nom_proveedor}}</td>
@@ -35,7 +45,10 @@
 		@endforeach
 	</tbody>
 </table>
+
 <div class="text-center">
 	{{$productos_proveedor->links()}}
 </div>
+
+<hr>
 @stop
