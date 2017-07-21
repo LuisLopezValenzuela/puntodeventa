@@ -62,7 +62,12 @@ class productosController extends Controller
 
 	}
 	public function vistaInventario(){
-		return view('reporteInventario');
+		$productos_proveedor=DB::table('productos_proveedores')
+		->join('productos','productos_proveedores.productos_id','productos.id')
+		->join('proveedores','productos_proveedores.proveedores_id','proveedores.id')
+		->select('productos_proveedores.*','productos.codigo AS codigo','productos.nombre AS nombre','productos.stock AS stock','productos.precio AS precio','productos.categoria_id as id_categoria','proveedores.nombre AS nom_proveedor' )
+		->get();
+		return view('reporteInventario',compact('productos_proveedor'));
 	}
 
 }
