@@ -39,14 +39,15 @@
 			<td>{{$a->nombre}}</td>
 			<td>{{$a->stock}}</td>
 			<td>
-				<div class="form-inline " action="{{url('/agregaStock')}}" method="POST">
+				<form class="form-inline" action="{{url('/agregaStock')}}" method="POST">
+					<input id="token" type="hidden" name="_token" value="{{csrf_token()}}">
 					<div class="form-group ">
 					    <input type="numeric" class="form-control" name="sumStock">
 					</div>
 					<button class="btn btn-success" type="submit">
 					    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
 					 </button>
-				</div>
+				</form>
 			</td>
 			<td>{{$a->precio}}</td>
 			<td>{{$a->nom_categoria}}</td>

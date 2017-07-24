@@ -4,6 +4,10 @@
 <form action="{{url('guardarProductos')}}" method="POST">
 <input id="token" type="hidden" name="_token" value="{{csrf_token()}}">
 	<div class="form-group">
+		<label for="id">ID:</label>
+		<input type="text" class="form-control" name="id" required>
+	</div>
+	<div class="form-group">
 		<label for="nombre">Nombre:</label>
 		<input type="text" class="form-control" name="nombre" required>
 	</div>
@@ -31,6 +35,17 @@
 		<select name="categoria" class="form-control">
 			@foreach($categorias as $c)
 			<option value="{{$c->id}}">{{$c->nombre}}
+				
+			</option>
+			@endforeach
+			
+		</select>
+	</div>
+	<div class="form-group">
+		<label for="proveedorId">Proveedor:</label>
+		<select name="proveedorId" class="form-control">
+			@foreach($productos_proveedores as $p)
+			<option value="{{$p->id}}">{{$p->nombre}}
 				
 			</option>
 			@endforeach

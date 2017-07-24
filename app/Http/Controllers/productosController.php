@@ -7,13 +7,14 @@ use App\Http\Controllers\Controller;
 use App\Productos;
 use App\Proveedores;
 use App\Categorias;
-use App\productos_proveedores;
+use App\Productos_Proveedores;
 use DB;
 class productosController extends Controller
 {
     public function registrar(){
     	$categorias=Categorias::all();
-		return view ('registrarProductos',compact('categorias'));
+    	$productos_proveedores=Productos_Proveedores::all();
+		return view ('registrarProductos',compact('categorias','productos_proveedores'));
 	}
 	public function guardar(Request $datos)
 	{
@@ -21,14 +22,19 @@ class productosController extends Controller
 		$descuento=$descuento/100;
 
 		$producto= new Productos();
+		$producto->id=$datos->input('id');
 		$producto->nombre=$datos->input('nombre');
 		$producto->precio=$datos->input('precio');
 		$producto->descuento=$descuento;
 		$producto->codigo=$datos->input('codigo');
 		$producto->stock=$datos->input('stock');
 		$producto->categoria_id=$datos->input('categoria');
-
 		$producto->save();
+
+		$productos_proveedores = new Productos_Proveedores();
+		$productos_proveedores->productos_id->$datos->input('id');
+		$productos_proveedores->proveedores_id->$datos->input('provedorId');
+		$productos_proveedores->save();
 
 	return redirect('/consultarProductos');
 	}
@@ -37,6 +43,7 @@ class productosController extends Controller
 		->join('categorias','productos.categoria_id','categorias.id')
 		->select('productos.*','categorias.nombre AS nom_categoria')
 		->get();
+
 		return view('consultarProductos',compact('productos'));
 	}
 	public function eliminar($id){
@@ -71,18 +78,20 @@ class productosController extends Controller
 		->join('productos','productos_proveedores.productos_id','productos.id')
 		->join('proveedores','productos_proveedores.proveedores_id','proveedores.id')
 		->join('categorias','productos.categoria_id','categorias.id')
-		->select('productos_proveedores.*','productos.codigo AS codigo','productos.nombre AS nombre','productos.stock AS stock','productos.precio AS precio','categorias.nombre as nom_categoria','proveedores.nombre AS nom_proveedor','productos.created_at as fecha' )
+		->select('productos_proveedores.*','productos.codigo AS codigo','productos.nombre AS nombre','productos.stock AS stock','productos.precio AS precio','categorias.nombre as nom_categoria','proveedores.nombre AS nom_proveedor','productos.created_at as fecha','productos.id AS prodId' )
 		->paginate(5);
 
 		return view('reporteInventario',compact('productos_proveedor'));
 	}
 
-	public function agregar($id){
-
+	public function agregar(){
 		/*
-		$producto= new Productos();
-		->where('productos.id','=',$id)
-		$producto->stock=$datos->input('sum','(','sumStock','+','stock',')');
+		$producto=Productos::find($id);
+		//$producto->stock=$datos->input('sum','(','sumStock','+','stock',')');
+		$producto->stock=$datos->input('sumStock');
+
+		dd($producto);
+		$producto->save();
 		return redirect('/reporteInventario');
 		*/
 	}
