@@ -35,3 +35,5 @@ Route::get('/eliminarProductos/{id}',"productosController@eliminar");
 Route::get('/editarProductos/{id}',"productosController@editar");
 Route::post('/actualizarProductos/{id}',"productosController@actualizar");
 Route::get('/reporteInventario', "productosController@vistaInventario");
+Route::get('/pdfInventario','productosController@pdf');
+Route::post('/agregaStock',"productosController@agregar");

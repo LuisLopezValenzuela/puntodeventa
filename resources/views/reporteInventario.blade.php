@@ -1,6 +1,23 @@
 @extends('master')
 
 @section('contenido')
+<div class="col-lg-8 col-md-7 col-sm-6">
+	<h1>Reporte de Inventario</h1>
+	<br>
+</div>
+
+<div class="form-inline" >
+	 <div class="form-group">
+	 	<label class="control-label" for="fechaini">Fecha inicial </label>
+        <input class="form-control" type="text" class="form-control" name = "fechaini" placeholder="AAAA/MM/DD" >
+        <label class="control-label" for="fechafin">Fecha final</label>
+        <input class="form-control" type="text" class="form-control" name = "fechafin" placeholder="AAAA/MM/DD">
+    </div>
+        <button type="submit" class="btn btn-default">Search</button>      
+        <button href="{{url('/pdfInventario')}}" class="btn btn-primary">PDF</button> 
+       	
+</div>
+<br> 
 <table class="table table-striped">
 	<thead>
 		<tr>
@@ -22,12 +39,14 @@
 			<td>{{$a->nombre}}</td>
 			<td>{{$a->stock}}</td>
 			<td>
-				<div class="input-group">
-					<input type="number" class="form-control" name="agregar" required>
-					<span class="input-group-btn">
-	      				<button class="btn btn-default" type="button">Button</button>
-	    			</span>
-    			</div>
+				<div class="form-inline " action="{{url('/agregaStock')}}" method="POST">
+					<div class="form-group ">
+					    <input type="numeric" class="form-control" name="sumStock">
+					</div>
+					<button class="btn btn-success" type="submit">
+					    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+					 </button>
+				</div>
 			</td>
 			<td>{{$a->precio}}</td>
 			<td>{{$a->nom_categoria}}</td>

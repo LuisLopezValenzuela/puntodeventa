@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Productos;
 use App\Proveedores;
 use App\Categorias;
+use App\productos_proveedores;
 use DB;
 class productosController extends Controller
 {
@@ -28,6 +29,7 @@ class productosController extends Controller
 		$producto->categoria_id=$datos->input('categoria');
 
 		$producto->save();
+
 	return redirect('/consultarProductos');
 	}
 	public function consultar(){
@@ -73,6 +75,16 @@ class productosController extends Controller
 		->paginate(5);
 
 		return view('reporteInventario',compact('productos_proveedor'));
+	}
+
+	public function agregar($id){
+
+		/*
+		$producto= new Productos();
+		->where('productos.id','=',$id)
+		$producto->stock=$datos->input('sum','(','sumStock','+','stock',')');
+		return redirect('/reporteInventario');
+		*/
 	}
 
 }
