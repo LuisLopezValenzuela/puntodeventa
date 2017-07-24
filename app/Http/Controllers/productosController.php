@@ -76,6 +76,19 @@ class productosController extends Controller
 
 		return view('reporteInventario',compact('productos_proveedor'));
 	}
+	  public function pdf(){
+	  	$productos_proveedor=DB::table('productos_proveedores')
+		->join('productos','productos_proveedores.productos_id','productos.id')
+		->join('proveedores','productos_proveedores.proveedores_id','proveedores.id')
+		->join('categorias','productos.categoria_id','categorias.id')
+		->select('productos_proveedores.*','productos.codigo AS codigo','productos.nombre AS nombre','productos.stock AS stock','productos.precio AS precio','categorias.nombre as nom_categoria','proveedores.nombre AS nom_proveedor','productos.created_at as fecha' )
+		->get();
+   
+   	$vista=view('inventarioPDF',compact('productos_proveedor','codigo','nom_categoria','nom_proveedor','fecha'));
+   	$pdf=\App::make('dompdf.wrapper');
+   	$pdf->loadHTML($vista);
+   	return $pdf->stream('inventarioPDF.pdf');
+   }
 
 	public function agregar($id){
 

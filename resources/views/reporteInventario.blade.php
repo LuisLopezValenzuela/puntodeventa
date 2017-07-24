@@ -14,7 +14,7 @@
         <input class="form-control" type="text" class="form-control" name = "fechafin" placeholder="AAAA/MM/DD">
     </div>
         <button type="submit" class="btn btn-default">Search</button>      
-        <button href="{{url('/pdfInventario')}}" class="btn btn-primary">PDF</button> 
+        <a href="{{url('inventarioPDF')}}" class="btn btn-primary">PDF</a> 
        	
 </div>
 <br> 
