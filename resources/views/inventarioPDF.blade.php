@@ -17,8 +17,8 @@
 
 <table>
 	<tr>
-		<td colspan=""><img src="http://www.itculiacan.edu.mx/itcradio/imagenes/logo.png" width="200px"></td>
-		<td align="center"><h2 style="color: DarkMagenta">Lista de productos</h2></td>
+		<td colspan=""><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBLFGpk-Z_NXIN1-jOl8BvWWWhIS_5Ur19CKedPFrqBH25Jkw2" width="200px"></td>
+		<td align="center"><h2 style="color: red">Lista de productos</h2></td>
 	</tr>
 </table>
 
