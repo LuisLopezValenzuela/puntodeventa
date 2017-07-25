@@ -39,7 +39,7 @@
 			<td>{{$a->nombre}}</td>
 			<td>{{$a->stock}}</td>
 			<td>
-				<form class="form-inline" action="{{url('/agregaStock')}}/{{$a->$id}}" method="POST">
+				<form class="form-inline" action="{{url('/agregaStock')}}" method="POST">
 					<input id="token" type="hidden" name="_token" value="{{csrf_token()}}">
 					<div class="form-group ">
 					    <input type="numeric" class="form-control" name="sumStock">

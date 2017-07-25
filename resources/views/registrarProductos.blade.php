@@ -44,7 +44,7 @@
 	<div class="form-group">
 		<label for="proveedorId">Proveedor:</label>
 		<select name="proveedorId" class="form-control">
-			@foreach($productos_proveedores as $p)
+			@foreach($proveedores as $p)
 			<option value="{{$p->id}}">{{$p->nombre}}
 				
 			</option>

@@ -14,7 +14,8 @@ class productosController extends Controller
     public function registrar(){
     	$categorias=Categorias::all();
     	$productos_proveedores=Productos_Proveedores::all();
-		return view ('registrarProductos',compact('categorias','productos_proveedores'));
+    	$proveedores=Proveedores::all();
+		return view ('registrarProductos',compact('categorias','productos_proveedores','proveedores'));
 	}
 	public function guardar(Request $datos)
 	{
@@ -83,7 +84,8 @@ class productosController extends Controller
 
 		return view('reporteInventario',compact('productos_proveedor'));
 	}
-	  public function pdf(){
+
+	public function pdf(){
 	  	$productos_proveedor=DB::table('productos_proveedores')
 		->join('productos','productos_proveedores.productos_id','productos.id')
 		->join('proveedores','productos_proveedores.proveedores_id','proveedores.id')
