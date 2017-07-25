@@ -19,7 +19,9 @@ Route::post('/guardarEmpleado', 'empleadosController@guardar');
 
 Route::get('/consultarEmpleados', 'empleadosController@consultar');
 
-Route::get('/caja/{id}', 'ventasController@Iniciar');
+Route::get('/caja', 'ventasController@Iniciar');
+
+Route::post('/venta', 'ventasController@venta');
 
 
 Auth::routes();
