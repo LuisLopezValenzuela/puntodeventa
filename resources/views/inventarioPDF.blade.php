@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>Reporte de Alumnos por Grupos</title>
+	<title>Reporte de Inventario</title>
 	<style>
 		.encabezado {
 			color: white;
@@ -11,19 +11,28 @@
 		.border {
 			border: 1px solid;
 		}
+		body{
+			font-family: "HelveticaNeueLight", "HelveticaNeue-Light", "Helvetica Neue Light", "HelveticaNeue", "Helvetica Neue", 'TeXGyreHerosRegular', "Helvetica", "Tahoma", "Geneva", "Arial", 
+			sans-serif; 
+			font-weight:100; 
+			font-stretch:normal;
+		}
+		table{
+			border-collapse:separate;
+			border-spacing: 10px;
+		}
 	</style>
 </head>
 <body>
 
-<table>
-	<tr>
-		<td colspan=""><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBLFGpk-Z_NXIN1-jOl8BvWWWhIS_5Ur19CKedPFrqBH25Jkw2" width="200px"></td>
-		<td align="center"><h2 style="color: red">Lista de productos</h2></td>
-	</tr>
-</table>
+<div>	
+		<img src="https://www.freelogoservices.com/api/main/images/1j+ojl1FOMkX9WypfBe43D6kjfaArx5GmhbJwXs1M3EMoAJtlSAtj...tj...PU7" width="200px"> <br>	
+		<h2 align="center" style="color: red">Reporte de inventario</h2>
+	
+</div>
 
 <br>
-<table class="table table-striped">
+<table align="center" class="table table-striped">
 	<thead>
 		<tr>
 			<th>Codigo</th>
