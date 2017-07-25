@@ -22,23 +22,21 @@ class productosController extends Controller
 		$descuento=$descuento/100;
 
 		$producto= new Productos();
-		$producto->id=$datos->input('id');
 		$producto->nombre=$datos->input('nombre');
 		$producto->precio=$datos->input('precio');
 		$producto->descuento=$descuento;
 		$producto->codigo=$datos->input('codigo');
 		$producto->stock=$datos->input('stock');
-		$producto->categoria_id=$datos->input('categoria');
+		$producto->categoria_id=$datos->input('categoria');	
 		$producto->save();
 		
+		DB::table('Productos_Proveedores')->insert(['proveedores_id'=>$datos->proveedor,'productos_id'=>$producto->id]);
+		/*
 		$productos_proveedores= new Productos_Proveedores();
 		$productos_proveedores->productos_id->$datos->input('id');
-		dd($productos_proveedores);
 		$productos_proveedores->proveedores_id->$datos->input('proveedor');
-
-		
 		$productos_proveedores->save();
-
+		*/
 	return redirect('/consultarProductos');
 	}
 	public function consultar(){
