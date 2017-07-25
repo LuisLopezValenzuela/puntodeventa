@@ -13,9 +13,8 @@ class productosController extends Controller
 {
     public function registrar(){
     	$categorias=Categorias::all();
-    	$productos_proveedores=Productos_Proveedores::all();
     	$proveedores=Proveedores::all();
-		return view ('registrarProductos',compact('categorias','productos_proveedores','proveedores'));
+		return view ('registrarProductos',compact('categorias','proveedores'));
 	}
 	public function guardar(Request $datos)
 	{
@@ -31,10 +30,13 @@ class productosController extends Controller
 		$producto->stock=$datos->input('stock');
 		$producto->categoria_id=$datos->input('categoria');
 		$producto->save();
-
-		$productos_proveedores = new Productos_Proveedores();
+		
+		$productos_proveedores= new Productos_Proveedores();
 		$productos_proveedores->productos_id->$datos->input('id');
-		$productos_proveedores->proveedores_id->$datos->input('provedorId');
+		dd($productos_proveedores);
+		$productos_proveedores->proveedores_id->$datos->input('proveedor');
+
+		
 		$productos_proveedores->save();
 
 	return redirect('/consultarProductos');
