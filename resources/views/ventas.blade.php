@@ -4,37 +4,22 @@
 	<h2>Caja</h2>
 	
 	Folio: {{$ventas->folio}}
-	
+
 	<hr>
-	<form action="" method="post">
-	<input id="token" type="hidden" name"_token" value="{{ csrf_token() }}">
+	<form action="{{url('ingresarproducto')}}/{{$ventas->id}}" method="post">
+	<input id="token" type="hidden" name="_token" value="{{csrf_token()}}">
 	<div class="form-group">
 			<label for="productos">Escriba el Codigo del Producto</label>
 			<input type="text" name="codigo" class="form-control">
 	</div>
-	<button class="btn btn-primary">Añadir</button>
+	<button type="submit" class="btn btn-primary">Añadir</button>
 	</form>
 	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
   	Lista de Productos</button>
-  	<h3>Lista de Productos</h3>
-	<hr>
-	<div class="row">
-		<div class="col-xs-12">
-			<table class="table table-striped">
-				<thead>
-					<tr>
-						<th>Producto:</th>
-						<th>Precio:</th>
-						<th>Descuento:</th>
-						<th>Total:</th>
-					</tr>
-				</thead>
-				<tbody>
-					
-				</tbody>
-			</table>
-		</div>
-	</div>
+
+
+  @yield('caja')
+
 
 <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -47,7 +32,7 @@
       </div>
       <div class="modal-body">
         @foreach($Productos as $p)
-        	{{$p->nombre}} - {{$p->codigo}}
+        	{{$p->nombre}} - {{$p->codigo}}<br>
         @endforeach
       </div>
       <div class="modal-footer">

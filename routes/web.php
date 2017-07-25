@@ -23,6 +23,10 @@ Route::get('/caja', 'ventasController@Iniciar');
 
 Route::post('/venta', 'ventasController@venta');
 
+Route::post('/ingresarproducto/{id}', 'ventasController@cargarproducto');
+
+Route::get('/carrodecompras/{id}', 'ventasController@carro');
+
 
 Auth::routes();
 
