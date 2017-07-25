@@ -37,6 +37,17 @@
 			
 		</select>
 	</div>
+	<div class="form-group">
+		<label for="proveedor">Proveedor:</label>
+		<select name="proveedor" class="form-control">
+			@foreach($proveedores as $p)
+			<option value="{{$p->id}}">{{$p->nombre}}
+				
+			</option>
+			@endforeach
+			
+		</select>
+	</div>
 	<div>
 		<button type="submit" class="btn btn-primary">Registar</button>
 		<a href="{{url('/')}}" class="btn btn-danger">Cancelar</a>

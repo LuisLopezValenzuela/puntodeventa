@@ -16,7 +16,7 @@ class RegisterController extends Controller
     |
     | This controller handles the registration of new users as well as their
     | validation and creation. By default this controller uses a trait to
-    | provide this functionality without requiring any additional code.
+    | provide this functionality without requiring a<ny additional code.
     |
     */
 
@@ -60,8 +60,10 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return User
      */
+
     protected function create(array $data)
     {
+        dd($data);  
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
