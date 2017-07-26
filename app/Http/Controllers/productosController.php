@@ -31,13 +31,8 @@ class productosController extends Controller
 		$producto->save();
 		
 		DB::table('Productos_Proveedores')->insert(['proveedores_id'=>$datos->proveedor,'productos_id'=>$producto->id]);
-		/*
-		$productos_proveedores= new Productos_Proveedores();
-		$productos_proveedores->productos_id->$datos->input('id');
-		$productos_proveedores->proveedores_id->$datos->input('proveedor');
-		$productos_proveedores->save();
-		*/
-	return redirect('/consultarProductos');
+		
+		return redirect('/consultarProductos');
 	}
 	public function consultar(){
 		$productos=DB::table('productos')
@@ -99,6 +94,7 @@ class productosController extends Controller
    	return $pdf->stream('inventarioPDF.pdf');
    }
 
+
 	public function agregar(){
 		/*
 		$producto=Productos::find($id);
@@ -110,6 +106,24 @@ class productosController extends Controller
 		return redirect('/reporteInventario');
 		*/
 	}
+	public function reportesporFecha(request $datos){
+		
+		$fechaInicial=$datos->input('fechaini');
+		$fechaFinal=$datos->input('fechafin');
+		
+		$productos_proveedorF=DB::table('productos_proveedores')
+		->whereDate('productos.created_at','>=',$fechaInicial,'and','productos.created_at','<=',$fechaFinal)
+
+		->join('productos','productos_proveedores.productos_id','productos.id')
+		->join('proveedores','productos_proveedores.proveedores_id','proveedores.id')
+		->join('categorias','productos.categoria_id','categorias.id')
+		->select('productos_proveedores.*','productos.codigo AS codigo','productos.nombre AS nombre','productos.stock AS stock','productos.precio AS precio','categorias.nombre as nom_categoria','proveedores.nombre AS nom_proveedor','productos.created_at as fecha','productos.id AS prodId' )
+
+		->get();
+
+		return view('reporteInventarioFecha',compact('productos_proveedorF'));
+	}
+
 
 }
 

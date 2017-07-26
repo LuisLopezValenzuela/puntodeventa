@@ -20,6 +20,7 @@
    </form>    	
 </div>
 <br> 
+
 <table class="table table-striped">
 	<thead>
 		<tr>
@@ -35,7 +36,7 @@
 		</tr>
 	</thead>
 	<tbody>
-		@foreach($productos_proveedor as $a)
+		@foreach($productos_proveedorF as $a)
 		<tr>
 			<td>{{$a->codigo}}</td>
 			<td>{{$a->nombre}}</td>
@@ -68,9 +69,4 @@
 	</tbody>
 </table>
 
-<div class="text-center">
-	{{$productos_proveedor->links()}}
-</div>
-
-<hr>
 @stop
