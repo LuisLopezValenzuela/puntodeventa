@@ -40,12 +40,10 @@ class ventasController extends Controller
 		->select('id')
 		->first();
 
-
 		$ventasdetalles=new Ventasdetalles();
-		$ventasdetalles->producto_id=$productoid->$id;
-		$ventasdetalles->venta_id=$id;
+		$ventasdetalles->venta_id=intval($id);
+		$ventasdetalles->producto_id=$productoid->id;
 		$ventasdetalles->save();
-
 
 
 		return redirect('/carrodecompras/'.$id);
