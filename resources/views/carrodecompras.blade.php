@@ -11,6 +11,7 @@
 					<tr>
 						<th>Producto:</th>
 						<th>Precio:</th>
+						<th>Cantidad:</th>
 						<th>Descuento:</th>
 						<th>Total:</th>
 					</tr>
@@ -20,6 +21,7 @@
 					<tr>
 						<td>{{$l->nombre}}</td>
 						<td>{{$l->precio}}</td>
+						<td>Aun falta esto</td>
 						<td>{{$l->descuento}}</td>
 						<td>{{$l->total}}</td>
 					</tr>
