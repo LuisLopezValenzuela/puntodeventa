@@ -100,16 +100,23 @@ class productosController extends Controller
    }
 
 
-	public function agregar(){
-		/*
-		$producto=Productos::find($id);
-		//$producto->stock=$datos->input('sum','(','sumStock','+','stock',')');
-		$producto->stock=$datos->input('sumStock');
+	public function agregar($id,request $datos){
+		
+		
+		$nuevo=$datos->input('sumStock');
 
-		dd($producto);
+		$stock=DB::table('productos')
+		->where('productos.id','=',$id)
+		->select('productos.stock')
+		->first();
+		//$producto->stock=$datos->input('sum','(','sumStock','+','stock',')');
+		//$producto->stock=$datos->input('sumStock');
+
+		$producto=Productos::find($id);
+		$producto->stock=$stock->stock+$nuevo;
 		$producto->save();
 		return redirect('/reporteInventario');
-		*/
+		
 	}
 	public function reportesporFecha(request $datos){
 		
@@ -117,7 +124,8 @@ class productosController extends Controller
 		$fechaFinal=$datos->input('fechafin');
 		
 		$productos_proveedorF=DB::table('productos_proveedores')
-		->whereDate('productos.created_at','>=',$fechaInicial,'and','productos.created_at','<=',$fechaFinal)
+		->whereDate('productos.created_at','>=',date($fechaInicial))
+		->whereDate('productos.created_at','<=',date($fechaFinal))
 
 		->join('productos','productos_proveedores.productos_id','productos.id')
 		->join('proveedores','productos_proveedores.proveedores_id','proveedores.id')
@@ -125,7 +133,7 @@ class productosController extends Controller
 		->select('productos_proveedores.*','productos.codigo AS codigo','productos.nombre AS nombre','productos.stock AS stock','productos.precio AS precio','categorias.nombre as nom_categoria','proveedores.nombre AS nom_proveedor','productos.created_at as fecha','productos.id AS prodId' )
 
 		->get();
-
+		//dd($productos_proveedorF->first());
 		return view('reporteInventarioFecha',compact('productos_proveedorF'));
 	}
 
