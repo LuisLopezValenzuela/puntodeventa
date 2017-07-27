@@ -21,7 +21,7 @@ class productosController extends Controller
 
 		$descuento=$datos->input('descuento'); 
 		if ($descuento==0) {
-			$descuento=1;
+			$descuento=0;
 		}else{
 			$descuento=$descuento/100;
 		}

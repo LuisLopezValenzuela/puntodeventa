@@ -22,7 +22,7 @@
 			<td>{{$a->nombre}}</td>
 			<td>{{$a->precio}}</td>
 			<td>
-				@if($a->descuento==1)
+				@if($a->descuento==0)
 					<span class="label label-default">No descuento</span>
 				@else
 					{{$a->descuento*100}}%
@@ -49,5 +49,6 @@
 		@endforeach
 	</thead>
 </table>
+
 
 @stop
