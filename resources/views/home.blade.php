@@ -1,10 +1,10 @@
 @extends('master')
 
 @section('contenido')
-<div class="jumbotron">
-	<h1>Punto de venta</h1>
-	<p>Este sistema permite administrar los procesos relacionados con inventario registro de ventas y control de empleados</p>
-	<p><a href="#" class="btn btn-primary btn-lg">Mas..</a></p>
+<div class="jumbotron" align="center">
+	<h1>Bienvenido</h1>
+	<img src="https://www.freelogoservices.com/api/main/images/1j+ojl1FOMkX9WypfBe43D6kjfaArx5GmhbJwXs1M3EMoAJtlSAtj...tj...PU7" width="400px"> <br>
+	
 </div>
 
 @stop
