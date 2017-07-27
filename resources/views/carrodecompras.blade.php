@@ -36,10 +36,13 @@
 		</div>
 	</div>
 <div class="text-right">
-	<form method="post" action="{{url('Finalizar')}}/{{$ventas->id}}" class="form-horizontal">
+	<form method="post" action="{{url('finalizar')}}/{{$ventas->id}}" class="form-horizontal">
 	<input id="token" type="hidden" name="_token" value="{{csrf_token()}}">
+		<label>Metodo de pago: </label><br>
 		<label class="radio-inline"><input type="radio" name="tipodepago" value="Efectivo">Efectivo</label>
   		<label class="radio-inline"><input type="radio" name="tipodepago" value="Tarjeta">Tarjeta</label><br><br>
+  		<label>$</label>
+  		<input type="number" name="pago" placeholder="0">
 		<button type="Submit" class="btn btn-info">Finalizar Venta</button>
 	</form>
 </div>
