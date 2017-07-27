@@ -16,12 +16,14 @@
 					</tr>
 				</thead>
 				<tbody>
-					
-
-
-
-
-
+					@foreach($lista as $l)
+					<tr>
+						<td>{{$l->nombre}}</td>
+						<td>{{$l->precio}}</td>
+						<td>{{$l->descuento}}</td>
+						<td>{{$l->total}}</td>
+					</tr>
+					@endforeach
 				</tbody>
 			</table>
 		</div>

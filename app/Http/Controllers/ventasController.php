@@ -40,21 +40,38 @@ class ventasController extends Controller
 		->select('id')
 		->first();
 
+		$precio=DB::table('productos')
+		->where('id', '=', $productoid->id)
+		->select('precio')
+		->first();
+
 		$ventasdetalles=new Ventasdetalles();
 		$ventasdetalles->venta_id=intval($id);
 		$ventasdetalles->producto_id=$productoid->id;
+		$ventasdetalles->preciounidad=$precio->precio;
 		$ventasdetalles->save();
 
 
 		return redirect('/carrodecompras/'.$id);
 	}
 	public function carro($id){
+		
 		$Productos=Productos::all();
 		$ventas=DB::table('ventas')
 			->where('id', '=', $id)
 			->select('ventas.*')
 			->first();
-		return view('/carrodecompras', compact('ventas','Productos'));
+
+		$lista=DB::table('ventas_detalles')
+		->where('ventas_detalles.venta_id', '=', $id)
+		->join('productos', 'productos.id', '=', 'ventas_detalles.producto_id' )
+		->select(DB::raw('sum(productos.precio * productos.descuento) as total'), 'productos.nombre','productos.descuento','productos.precio')
+		->groupBy('ventas_detalles.producto_id','productos.nombre','productos.descuento','productos.precio')
+		->get();
+
+		
+		
+		return view('/carrodecompras', compact('ventas','Productos','lista'));
 	}
 
 }

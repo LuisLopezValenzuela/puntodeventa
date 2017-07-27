@@ -18,8 +18,13 @@ class productosController extends Controller
 	}
 	public function guardar(Request $datos)
 	{
+
 		$descuento=$datos->input('descuento'); 
-		$descuento=$descuento/100;
+		if ($descuento==0) {
+			$descuento=1;
+		}else{
+			$descuento=$descuento/100;
+		}
 
 		$producto= new Productos();
 		$producto->nombre=$datos->input('nombre');
@@ -32,7 +37,7 @@ class productosController extends Controller
 		
 		DB::table('Productos_Proveedores')->insert(['proveedores_id'=>$datos->proveedor,'productos_id'=>$producto->id]);
 		
-		return redirect('/consultarProductos');
+		return redirect('/reporteInventario');
 	}
 	public function consultar(){
 		$productos=DB::table('productos')
