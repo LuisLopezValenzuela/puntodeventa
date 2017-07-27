@@ -37,7 +37,7 @@ class productosController extends Controller
 		
 		DB::table('Productos_Proveedores')->insert(['proveedores_id'=>$datos->proveedor,'productos_id'=>$producto->id]);
 		
-		return redirect('/reporteInventario');
+		return redirect('/consultarProductos');
 	}
 	public function consultar(){
 		$productos=DB::table('productos')

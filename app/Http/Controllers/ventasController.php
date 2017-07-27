@@ -45,10 +45,17 @@ class ventasController extends Controller
 		->select('precio')
 		->first();
 
+		$contador=DB::table('ventas_detalles')
+		->where('venta_id', '=', $id)
+		->groupBy('producto_id')
+		->select(DB::raw('count(*) as cantidad'))
+		->get();
+
 		$ventasdetalles=new Ventasdetalles();
 		$ventasdetalles->venta_id=intval($id);
 		$ventasdetalles->producto_id=$productoid->id;
 		$ventasdetalles->preciounidad=$precio->precio;
+		$ventasdetalles->cantidad=$contador->cantidad;
 		$ventasdetalles->save();
 
 

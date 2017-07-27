@@ -30,6 +30,7 @@
             <li><a href="{{url('/registrarProductos')}}">Registrar Productos</a></li>
             <li class="divider"></li>
             <li><a href="{{url('/consultarEmpleados')}}">Lista de Empleados</a></li>
+            <li><a href="{{url('/consultarProductos')}}">Lista de Productos</a></li>
           </ul>
         </li>
       </ul>
