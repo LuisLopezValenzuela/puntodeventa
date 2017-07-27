@@ -74,4 +74,8 @@ class ventasController extends Controller
 		return view('/carrodecompras', compact('ventas','Productos','lista'));
 	}
 
+	public function cierre($id){
+		
+	}
+
 }
