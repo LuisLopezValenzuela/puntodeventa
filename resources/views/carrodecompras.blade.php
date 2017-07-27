@@ -22,7 +22,12 @@
 						<td>{{$l->nombre}}</td>
 						<td>{{$l->precio}}</td>
 						<td>Aun falta esto</td>
-						<td>{{$l->descuento}}</td>
+						<td>
+					@if($l->descuento==1)
+					<span class="label label-default">No descuento</span>
+					@else
+					{{$l->descuento*100}}%
+					@endif</td>
 						<td>{{$l->total}}</td>
 					</tr>
 					@endforeach

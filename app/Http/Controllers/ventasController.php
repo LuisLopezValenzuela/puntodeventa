@@ -82,7 +82,7 @@ class ventasController extends Controller
 		$lista=DB::table('ventas_detalles')
 		->where('ventas_detalles.venta_id', '=', $id)
 		->join('productos', 'productos.id', '=', 'ventas_detalles.producto_id' )
-		->select(DB::raw('sum(productos.precio * productos.descuento) as total'), 'productos.nombre','productos.descuento','productos.precio')
+		->select(DB::raw('sum(productos.precio-(productos.precio * productos.descuento)) as total'), 'productos.nombre','productos.descuento','productos.precio')
 		->groupBy('ventas_detalles.producto_id','productos.nombre','productos.descuento','productos.precio')
 		->get();
 
