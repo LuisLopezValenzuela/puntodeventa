@@ -27,6 +27,8 @@ Route::post('/ingresarproducto/{id}', 'ventasController@cargarproducto');
 
 Route::get('/carrodecompras/{id}', 'ventasController@carro');
 
+Route::post('/finalizar/{id}', 'ventasController@cierre');
+
 
 Auth::routes();
 

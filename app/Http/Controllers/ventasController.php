@@ -45,17 +45,10 @@ class ventasController extends Controller
 		->select('precio')
 		->first();
 
-		$contador=DB::table('ventas_detalles')
-		->where('venta_id', '=', $id)
-		->groupBy('producto_id')
-		->select(DB::raw('count(*) as cantidad'))
-		->get();
-
 		$ventasdetalles=new Ventasdetalles();
 		$ventasdetalles->venta_id=intval($id);
 		$ventasdetalles->producto_id=$productoid->id;
 		$ventasdetalles->preciounidad=$precio->precio;
-		$ventasdetalles->cantidad=$contador->cantidad;
 		$ventasdetalles->save();
 
 
@@ -72,13 +65,17 @@ class ventasController extends Controller
 		$lista=DB::table('ventas_detalles')
 		->where('ventas_detalles.venta_id', '=', $id)
 		->join('productos', 'productos.id', '=', 'ventas_detalles.producto_id' )
-		->select(DB::raw('sum(productos.precio * productos.descuento) as total'), 'productos.nombre','productos.descuento','productos.precio')
+		->select(DB::raw('sum(productos.precio-(productos.precio * productos.descuento)) as total'), DB::raw('count(*) as cantidad'), 'productos.nombre','productos.descuento','productos.precio')
 		->groupBy('ventas_detalles.producto_id','productos.nombre','productos.descuento','productos.precio')
 		->get();
 
 		
 		
 		return view('/carrodecompras', compact('ventas','Productos','lista'));
+	}
+
+	public function cierre($id){
+		
 	}
 
 }

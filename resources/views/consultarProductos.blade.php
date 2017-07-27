@@ -21,7 +21,13 @@
 			<td>{{$a->id}}</td>
 			<td>{{$a->nombre}}</td>
 			<td>{{$a->precio}}</td>
-			<td>{{$a->descuento}}</td>
+			<td>
+				@if($a->descuento==0)
+					<span class="label label-default">No descuento</span>
+				@else
+					{{$a->descuento*100}}%
+				@endif
+			</td>
 			<td>{{$a->codigo}}</td>
 			<td>{{$a->stock}}</td>
 			<td>{{$a->nom_categoria}}</td>
@@ -43,5 +49,6 @@
 		@endforeach
 	</thead>
 </table>
+
 
 @stop
