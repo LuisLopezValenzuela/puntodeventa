@@ -104,9 +104,14 @@ class ventasController extends Controller
 		return view('/ImprimirVenta', compact('venta','lista','total','cambio','pago'));
 	}
 
-	public function eliminar($id){
+	public function eliminar($idp,$idv){
+		$producto=DB::table('ventas_detalles')
+		->where('producto_id', '=', $idp)
+		->delete();
 
+		
 
+		return redirect('/carrodecompras/'.$idv);
 	}
 
 }

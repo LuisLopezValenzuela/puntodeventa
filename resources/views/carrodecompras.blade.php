@@ -9,6 +9,7 @@
 			<table class="table table-striped">
 				<thead>
 					<tr>
+						<th></th>
 						<th>Producto:</th>
 						<th>Precio:</th>
 						<th>Cantidad:</th>
@@ -19,6 +20,7 @@
 				<tbody>
 					@foreach($lista as $l)
 					<tr>
+						<td><a href="{{url('/eliminarlista')}}/{{$l->producto_id}}/{{$l->venta_id}}"><span class="btn btn-danger">X</span></a></td>
 						<td>{{$l->nombre}}</td>
 						<td>{{$l->precio}}</td>
 						<td>{{$l->cantidad}}</td>

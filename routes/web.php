@@ -31,6 +31,7 @@ Route::get('/carrodecompras/{id}', 'ventasController@carro');
 
 Route::post('/finalizar/{idv}', 'ventasController@cierre');
 
+Route::get('/eliminarlista/{idp}/{idv}', 'ventasController@eliminar');
 
 Auth::routes();
 
