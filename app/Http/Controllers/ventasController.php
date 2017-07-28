@@ -65,8 +65,8 @@ class ventasController extends Controller
 		$lista=DB::table('ventas_detalles')
 		->where('ventas_detalles.venta_id', '=', $id)
 		->join('productos', 'productos.id', '=', 'ventas_detalles.producto_id' )
-		->select(DB::raw('sum(productos.precio-(productos.precio * productos.descuento)) as total'), DB::raw('count(*) as cantidad'), 'productos.nombre','productos.descuento','productos.precio')
-		->groupBy('ventas_detalles.producto_id','productos.nombre','productos.descuento','productos.precio')
+		->select(DB::raw('sum(productos.precio-(productos.precio * productos.descuento)) as total'), DB::raw('count(*) as cantidad'), 'productos.nombre','productos.descuento','productos.precio','ventas_detalles.venta_id','ventas_detalles.producto_id')
+		->groupBy('ventas_detalles.producto_id','productos.nombre','productos.descuento','productos.precio','ventas_detalles.venta_id')
 		->get();
 
 		
@@ -74,15 +74,39 @@ class ventasController extends Controller
 		return view('/carrodecompras', compact('ventas','Productos','lista'));
 	}
 
-	public function cierre($id, Request $datos){
+	public function cierre($idv, Request $datos){
 			
-			$ventas=new Ventas();
-			$ventas->tipodepago=$datos->input('tipodepago');
-			$ventas->save();
+		$pago=$datos->input('pago');
 
+		$ventas=Ventas::find($idv);
+		$ventas->tipodepago=$datos->input('tipodepago');
+		$ventas->save();
 			
-
+		$lista=DB::table('ventas_detalles')
+		->where('ventas_detalles.venta_id', '=', $idv)
+		->join('productos', 'productos.id', '=', 'ventas_detalles.producto_id' )
+		->select(DB::raw('sum(productos.precio-(productos.precio * productos.descuento)) as total'), DB::raw('count(*) as cantidad'), 'productos.nombre','productos.descuento','productos.precio','ventas_detalles.venta_id','ventas_detalles.producto_id')
+		->groupBy('ventas_detalles.producto_id','productos.nombre','productos.descuento','productos.precio','ventas_detalles.venta_id','ventas_detalles.producto_id')
+		->get();
 		
+		$total=DB::table('ventas_detalles')
+		->where('ventas_detalles.venta_id', '=', $idv)
+		->join('productos', 'productos.id', '=', 'ventas_detalles.producto_id' )
+		->select(DB::raw('sum(productos.precio-(productos.precio * productos.descuento)) as total') , 'ventas_detalles.venta_id')
+		->groupBy('ventas_detalles.venta_id')
+		->first();
+
+		$venta=Ventas::all();
+
+		$cambio=$pago-$total->total;
+
+
+		return view('/ImprimirVenta', compact('venta','lista','total','cambio','pago'));
+	}
+
+	public function eliminar($id){
+
+
 	}
 
 }

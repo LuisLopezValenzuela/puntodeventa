@@ -1,8 +1,9 @@
-@extends('ventas')
+@extends('master')
 
-@Section('caja')
+@section('contenido')
 
-  	<h3>Productos</h3>
+<div class="jumbotron" align="center">
+	<img src="https://www.freelogoservices.com/api/main/images/1j+ojl1FOMkX9WypfBe43D6kjfaArx5GmhbJwXs1M3EMoAJtlSAtj...tj...PU7" width="200px"> <br>
 	<hr>
 	<div class="row">
 		<div class="col-xs-12">
@@ -31,18 +32,42 @@
 						<td>{{$l->total}}</td>
 					</tr>
 					@endforeach
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td  class="text-right">Total:</td>
+						<td>{{$total->total}}</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td  class="text-right">Pago:</td>
+						<td>{{$pago}}</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td  class="text-right">Cambio:</td>
+						<td>{{$cambio}}</td>
+					</tr>
 				</tbody>
 			</table>
 		</div>
 	</div>
-<div class="text-right">
-	<form method="post" action="{{url('finalizar')}}/{{$ventas->id}}" class="form-horizontal">
-	<input id="token" type="hidden" name="_token" value="{{csrf_token()}}">
-		<label class="radio-inline"><input type="radio" name="tipodepago" value="Efectivo">Efectivo</label>
-  		<label class="radio-inline"><input type="radio" name="tipodepago" value="Tarjeta">Tarjeta</label><br><br>
-		$<input type="number" placeholder="0" name="pago">
-		<button type="Submit" class="btn btn-info">Finalizar Venta</button>
-	</form>
+
+
+
+
+
 </div>
+
+
+
+
+
+
 
 @stop

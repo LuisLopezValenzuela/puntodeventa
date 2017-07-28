@@ -25,9 +25,11 @@ Route::post('/venta', 'ventasController@venta');
 
 Route::post('/ingresarproducto/{id}', 'ventasController@cargarproducto');
 
+Route::get('/eliminarlista/{id}', 'ventasController@eliminar');
+
 Route::get('/carrodecompras/{id}', 'ventasController@carro');
 
-Route::post('/finalizar/{id}', 'ventasController@cierre');
+Route::post('/finalizar/{idv}', 'ventasController@cierre');
 
 
 Auth::routes();
